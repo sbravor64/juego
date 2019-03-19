@@ -18,7 +18,7 @@ public class juego {
         for (int i = 0; i <columnas ; i++) {
             for (int j = 0; j <filas ; j++) {
                 Random r = new Random();
-                tablero[i][j]=r.nextInt(4)+1;
+                tablero[i][j]=r.nextInt(2);
                 System.out.print(tablero[i][j]+" ");
             }
             System.out.println();
