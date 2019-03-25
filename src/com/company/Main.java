@@ -6,6 +6,10 @@ import java.util.Scanner;
 public class Main {
 
     public static void main(String[] args) {
+        Nick nick_jug_1= new Nick();
+        Nick nick_jug_2= new Nick();
+
+
         draw draw_jug1 = new draw();
         draw draw_jug2 = new draw();
 
@@ -14,9 +18,6 @@ public class Main {
         draw_jug2.tablero();
 
 
-        Game game = new Game();
-
-        game.juego();
         draw_jug2.recorrido();
 
     }
