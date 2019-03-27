@@ -31,20 +31,15 @@ public class Main {
         draw_jug2.contadorBarcos();
 
 
-        // Comienzo de juego
-        //while(draw_jug1.conttablero>draw_jug1.puntos_jug){
-        //    draw_jug1.tableroC();
-        //    nick_jug_1.nickJ();
-        //    draw_jug2.recorrido();
-        //    draw_jug2.tableroC();
-        //    nick_jug_2.nickJ();
-        //    draw_jug1.recorrido();
-        //}
-
         //Comienza el juego
-        nick_jug_1.nickJ();
-        draw_jug2.recorrido();
+        while(draw_jug2.conttablero>draw_jug2.puntos_jug) {
 
+            nick_jug_1.nickJ();
+            draw_jug2.recorrido();
+
+            nick_jug_2.nickJ();
+            draw_jug1.recorrido();
+        }
 
     }
 }
