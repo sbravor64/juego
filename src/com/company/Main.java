@@ -6,6 +6,10 @@ import java.util.Scanner;
 public class Main {
 
     public static void main(String[] args) {
+
+        Inicio draw= new Inicio();
+        draw.inicio();
+
         // creación de Nick de jugadores
         Nick nick_jug_1= new Nick();
         Nick nick_jug_2= new Nick();
