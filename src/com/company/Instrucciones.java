@@ -1,9 +1,8 @@
 package com.company;
-import java.sql.SQLOutput;
-import java.util.Scanner;
 
-class Inicio {
-    void inicio(){
+class Instrucciones {
+
+    void mostrar(){
         System.out.println();
         System.out.println("¡BIENVENIDO!");
         System.out.println("- HUNDIR EL BARCO -");
@@ -13,5 +12,4 @@ class Inicio {
         System.out.println("  O = Agua descubierta");
         System.out.println();
     }
-
 }

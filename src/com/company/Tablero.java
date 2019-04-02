@@ -1,79 +1,73 @@
 package com.company;
-import java.sql.SQLOutput;
+
 import java.util.Random;
 import java.util.Scanner;
 
-class draw {
+class Tablero {
     Scanner teclado = new Scanner(System.in);
-    int[][] tablero = new int[3][3];
-    String[][] tableroC = new String[3][3];
-    int conttablero;
-    int puntos_jug;
+    Random random = new Random();
 
-     void tablero(){
+    int[][] casillas = new int[3][3];
+    String[][] casillasX = new String[3][3];  //se usa para comprobar y tal y cual
+
+    int numeroBarcos;
+    int puntos;
+
+     void crear(){
         for (int i = 0; i <3 ; i++) {
             for (int j = 0; j <3 ; j++) {
-                Random r = new Random();
-                tablero[i][j]=r.nextInt(2);
+                casillas[i][j] = random.nextInt(2);
+                casillasX[i][j]="*";
             }
         }
     }
 
-    void tableroC(){
+    void contarBarcos(){
         for (int i = 0; i <3 ; i++) {
             for (int j = 0; j <3 ; j++) {
-                tableroC[i][j]="*";
-            }
-        }
-    }
-
-    void contadorBarcos(){
-        for (int i = 0; i <3 ; i++) {
-            for (int j = 0; j <3 ; j++) {
-                if(tablero[i][j]==1){
-                    conttablero++;
+                if(casillas[i][j]==1){
+                    numeroBarcos++;
                 }
             }
         }
     }
 
-    void recorrido(){
-        System.out.println("Dime la posición que quieres atacar?");
+    void mostrarX(){
         for (int i = 0; i <3 ; i++) {
             for (int j = 0; j <3 ; j++) {
-                System.out.print(tableroC[i][j]);
+                System.out.print(casillasX[i][j]);
             }
             System.out.println();
         }
-        System.out.print("FILA: ");
-        int f=teclado.nextInt();
-        System.out.print("COLUMNA: ");
-        int c=teclado.nextInt();
+    }
+
+    void pedirPosicionAtaque(){
+        System.out.println("Dime la posición que quieres atacar?");
+    }
+
+
+
+    void recorrido(){
 
 
         while(f<=3 && c<=3) {
            f=f-1;
            c=c-1;
-             if(tablero[f][c]==1){
-                 if(tableroC[f][c]=="B"){
+             if(casillas[f][c]==1){
+                 if(casillasX[f][c]=="B"){
                      System.out.println("ESTE BARCO YA LO HAS ENCONTRADO");
-                     for (int i = 0; i <3 ; i++) {
-                         for (int j = 0; j <3 ; j++) {
-                             System.out.print(tableroC[i][j]);
-                         }
-                         System.out.println();
-                     }
+                     mostrarX();
                  } else{
                      System.out.println("HAS ENCONTRADO UN BARCO!");
-                     puntos_jug++;
+                     puntos++;
 
                      for (int i = 0; i <3 ; i++) {
                          for (int j = 0; j <3 ; j++) {
                              if(f==i && c==j){
-                                 tableroC[i][j]="B";
-                                 System.out.print(tableroC[i][j]);
+                                 casillasX[i][j]="B";
+                                 System.out.print(casillasX[i][j]);
                              } else{
-                                 System.out.print(tableroC[i][j]);
+                                 System.out.print(casillasX[i][j]);
                              }
 
                          }
@@ -83,16 +77,16 @@ class draw {
 
                  System.out.println("SIGUE BUSCANDO!");
 
-             } else if (tablero[f][c]==0){
+             } else if (casillas[f][c]==0){
                  System.out.println("HAS DADO EN EL AGUA!");
                  for (int i = 0; i <3 ; i++) {
                      for (int j = 0; j <3 ; j++) {
                          if(f==i && c==j){
-                             tablero[i][j]=2;
-                             tableroC[i][j]="O";
-                             System.out.print(tableroC[i][j]);
+                             casillas[i][j]=2;
+                             casillasX[i][j]="O";
+                             System.out.print(casillasX[i][j]);
                          } else{
-                             System.out.print(tableroC[i][j]);
+                             System.out.print(casillasX[i][j]);
                          }
 
                      }
@@ -105,7 +99,7 @@ class draw {
                  break;
              }
 
-             if(conttablero==puntos_jug){
+             if(numeroBarcos == puntos){
                  System.out.println();
                  System.out.println();
                  System.out.println("---------------");

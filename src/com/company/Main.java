@@ -1,48 +1,47 @@
 package com.company;
 
-import java.util.Random;
-import java.util.Scanner;
-
 public class Main {
 
     public static void main(String[] args) {
 
         // Mensaje de Binvenida
-        Inicio draw= new Inicio();
-        draw.inicio();
+        Instrucciones instrucciones = new Instrucciones();
+        instrucciones.mostrar();
 
-        // creación de Nick de jugadores
-        Nick nick_jug_1= new Nick();
-        Nick nick_jug_2= new Nick();
+        // creación de Jugador de jugadores
+        Jugador jugador1 = new Jugador();
+        Jugador jugador2 = new Jugador();
 
-        nick_jug_1.nombre();
-        nick_jug_2.nombre();
+        jugador1.ponerNombre();
+        jugador2.ponerNombre();
 
 
-        // Creación del dibujo (tablero) para el juego
-        draw draw_jug1 = new draw();
-        draw draw_jug2 = new draw();
+        // Creación del dibujo (casillas) para el juego
+        Tablero tableroJugador1 = new Tablero();
+        Tablero tableroJugador2 = new Tablero();
 
-        draw_jug1.tablero();
-        System.out.println();
-        draw_jug2.tablero();
+        tableroJugador1.crear();
+        tableroJugador2.crear();
 
-        //Creación de los tableros de comprobación
-        draw_jug1.tableroC();
-        draw_jug2.tableroC();
 
         // Contar numero de Barcos
-        draw_jug1.contadorBarcos();
-        draw_jug2.contadorBarcos();
-
+        tableroJugador1.contarBarcos();
+        tableroJugador2.contarBarcos();
 
         //Comienza el juego
         while(true) {
-            nick_jug_1.nickJ();
-            draw_jug2.recorrido();
+            jugador1.mostrarTurno();
 
-            nick_jug_2.nickJ();
-            draw_jug1.recorrido();
+            tableroJugador2.pedirPosicionAtaque();
+            tableroJugador2.mostrarX();
+            jugador1.introducirPosicionAtaque();
+
+            tableroJugador2.recorrido();
+
+
+
+            jugador2.mostrarTurno();
+            tableroJugador1.recorrido();
         }
 
     }
