@@ -7,11 +7,12 @@ class Tablero {
     Scanner teclado = new Scanner(System.in);
     Random random = new Random();
 
-    int[][] casillas = new int[3][3];
+    int[][] casillas = new int[3][3];   // 0 vacia   1 barco    2  agua    3 hundido
     String[][] casillasX = new String[3][3];  //se usa para comprobar y tal y cual
 
     int numeroBarcos;
-    int puntos;
+    int hundidos;
+    int f,c;
 
      void crear(){
         for (int i = 0; i <3 ; i++) {
@@ -32,90 +33,51 @@ class Tablero {
         }
     }
 
-    void mostrarX(){
+    void mostrarTablero(){
+        System.out.println();
+        System.out.println();
+        System.out.println();
         for (int i = 0; i <3 ; i++) {
             for (int j = 0; j <3 ; j++) {
-                System.out.print(casillasX[i][j]);
+                if(casillas[i][j] == 0){
+                    System.out.print("*");
+                }
+                else if(casillas[i][j] == 1){
+                    System.out.print("-");
+                }
             }
             System.out.println();
         }
     }
 
-    void pedirPosicionAtaque(){
-        System.out.println("Dime la posición que quieres atacar?");
+    void comprobarCasilla(Jugador jugador) {
+        if(casillas[jugador.fila][jugador.columna] == 0){
+            System.out.println("\033[34magua\033[0m");
+            casillas[jugador.fila][jugador.columna] = 2;
+
+        }
+        else if(casillas[jugador.fila][jugador.columna] == 1){
+            System.out.println("\033[91mhundido\033[0m");
+            casillas[jugador.fila][jugador.columna] = 3;
+            hundidos++;
+        }
+        else if(casillas[jugador.fila][jugador.columna] == 2){
+            System.out.println("otra vez agua recuerda");
+        }
+        else if(casillas[jugador.fila][jugador.columna] == 3){
+            System.out.println("ya encontrado");
+        }
     }
 
 
 
-    void recorrido(){
-
-
-        while(f<=3 && c<=3) {
-           f=f-1;
-           c=c-1;
-             if(casillas[f][c]==1){
-                 if(casillasX[f][c]=="B"){
-                     System.out.println("ESTE BARCO YA LO HAS ENCONTRADO");
-                     mostrarX();
-                 } else{
-                     System.out.println("HAS ENCONTRADO UN BARCO!");
-                     puntos++;
-
-                     for (int i = 0; i <3 ; i++) {
-                         for (int j = 0; j <3 ; j++) {
-                             if(f==i && c==j){
-                                 casillasX[i][j]="B";
-                                 System.out.print(casillasX[i][j]);
-                             } else{
-                                 System.out.print(casillasX[i][j]);
-                             }
-
-                         }
-                         System.out.println();
-                     }
-                 }
-
-                 System.out.println("SIGUE BUSCANDO!");
-
-             } else if (casillas[f][c]==0){
-                 System.out.println("HAS DADO EN EL AGUA!");
-                 for (int i = 0; i <3 ; i++) {
-                     for (int j = 0; j <3 ; j++) {
-                         if(f==i && c==j){
-                             casillas[i][j]=2;
-                             casillasX[i][j]="O";
-                             System.out.print(casillasX[i][j]);
-                         } else{
-                             System.out.print(casillasX[i][j]);
-                         }
-
-                     }
-                     System.out.println();
-                 }
-                 break;
-             } else {
-                 System.out.println("RECUERDA QUE 'O' SIGNIFICA AGUA");
-                 System.out.println("PIERDES TURNO");
-                 break;
-             }
-
-             if(numeroBarcos == puntos){
-                 System.out.println();
-                 System.out.println();
-                 System.out.println("---------------");
-                 System.out.println("¡¡FELICIDADES!!");
-                 System.out.println("HAS GANADO!!");
-                 System.exit(0);
-             }
-
+    void comprobarTodosHundidos(){
+        if(numeroBarcos == hundidos){
             System.out.println();
-            System.out.println("¿Dime la posición que quieres atacar?");
-            System.out.print("FILA: ");
-            f=teclado.nextInt();
-            System.out.print("COLUMNA: ");
-            c=teclado.nextInt();
-
-         }
-     }
-
+            System.out.println();
+            System.out.println("---------------");
+            System.out.println("¡¡FELICIDADES!!");
+            System.out.println("HAS GANADO!!");
+        }
+    }
 }

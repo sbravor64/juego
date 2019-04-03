@@ -30,19 +30,37 @@ public class Main {
 
         //Comienza el juego
         while(true) {
-            jugador1.mostrarTurno();
 
-            tableroJugador2.pedirPosicionAtaque();
-            tableroJugador2.mostrarX();
+            // while jugador 1 aceierta
+
+            tableroJugador2.mostrarTablero();
+
             jugador1.introducirPosicionAtaque();
 
-            tableroJugador2.recorrido();
+            tableroJugador2.comprobarCasilla(jugador1);
+
+            tableroJugador2.comprobarTodosHundidos();
 
 
+            // if (tablero2 NO estaban todos hundidos)
+            // while jugador2 acierta
 
-            jugador2.mostrarTurno();
-            tableroJugador1.recorrido();
+            tableroJugador1.mostrarTablero();
+
+            jugador2.introducirPosicionAtaque();
+
+            tableroJugador1.comprobarCasilla(jugador2);
+
+            tableroJugador1.comprobarTodosHundidos();
         }
 
     }
 }
+
+
+/*
+LLAMAR METODO:     pasar variables:    metodo(variable)            recibir:   void metodo(int variable)
+
+
+
+ */

@@ -5,6 +5,7 @@ import java.util.Scanner;
 class Jugador {
     Scanner teclado = new Scanner(System.in);
     String nick;
+    int fila, columna;
 
     void ponerNombre(){
         Scanner tec = new Scanner(System.in);
@@ -12,17 +13,19 @@ class Jugador {
         nick = tec.nextLine();
     }
 
-    void mostrarTurno(){
-        System.out.println();
-        System.out.println("-------------------------------------------");
-        System.out.print("¿"+nick+", ");
-    }
+
 
     void introducirPosicionAtaque(){
+        System.out.println(nick + " dime la posición que quieres atacar.");
         System.out.print("FILA: ");
-        int f=teclado.nextInt();
+        fila = teclado.nextInt() -1;
         System.out.print("COLUMNA: ");
-        int c=teclado.nextInt();
+        columna = teclado.nextInt()-1;
+
+
     }
 
 }
+
+
+//       \033[m
