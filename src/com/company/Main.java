@@ -33,7 +33,7 @@ public class Main {
         //Comienza el juego
         while(true) {
 
-            if(tableroJugador1.hundidos<tableroJugador1.numeroBarcos){
+                //Bucle para que el jugador tenga otra oportunidad mientras no falle al hundir un barco
                 do {
                     tableroJugador2.mostrarTablero();
 
@@ -43,14 +43,19 @@ public class Main {
 
                     tableroJugador2.comprobarTodosHundidos();
 
-                } while(tableroJugador2.casillas[jugador1.fila][jugador1.columna]==3);
-            } else {
-                return;
-            }
+                } while(tableroJugador2.casillas[jugador1.fila][jugador1.columna]==3
+                        && tableroJugador2.hundidos<tableroJugador2.numeroBarcos);
 
-            // if (tablero2 NO estaban todos hundidos)
 
-            if(tableroJugador2.hundidos<tableroJugador2.numeroBarcos){
+                //Mostrar el nombre del jugador ganador
+                if (tableroJugador2.hundidos==tableroJugador2.numeroBarcos) {
+                    System.out.print(jugador1.nick + "!!");
+                    return;
+                }
+
+
+
+                //Bucle para que el jugador tenga otra oportunidad mientras no falle al hundir un barco
                 do {
                     tableroJugador1.mostrarTablero();
 
@@ -60,12 +65,16 @@ public class Main {
 
                     tableroJugador1.comprobarTodosHundidos();
 
-                } while(tableroJugador1.casillas[jugador2.fila][jugador2.columna]==3);
-            } else {
-                return;
-            }
+                } while(tableroJugador1.casillas[jugador2.fila][jugador2.columna]==3
+                        && tableroJugador1.hundidos<tableroJugador1.numeroBarcos);
 
 
+
+                //Mostrar el nombre del jugador ganador
+                 if (tableroJugador1.hundidos==tableroJugador1.numeroBarcos) {
+                    System.out.print(jugador2.nick + "!!");
+                    return;
+                }
         }
 
     }

@@ -4,7 +4,6 @@ import java.util.Random;
 import java.util.Scanner;
 
 class Tablero {
-    Scanner teclado = new Scanner(System.in);
     Random random = new Random();
 
     int[][] casillas = new int[3][3];   // 0 vacia   1 barco    2  agua    3 hundido
@@ -55,7 +54,7 @@ class Tablero {
     void comprobarCasilla(Jugador jugador) {
         if(casillas[jugador.fila][jugador.columna] == 0){
             System.out.println("\033[34mHas dado en el Agua\033[0m");
-            System.out.println("Perdes Turno");
+            System.out.println("Pierdes Turno");
             casillas[jugador.fila][jugador.columna] = 2;
 
         }
@@ -83,7 +82,7 @@ class Tablero {
             System.out.println();
             System.out.println("---------------");
             System.out.println("¡¡FELICIDADES!!");
-            System.out.println("HAS GANADO!!");
+            System.out.print("HAS GANADO!! ");
         }
     }
 }
