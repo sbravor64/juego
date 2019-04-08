@@ -28,30 +28,44 @@ public class Main {
         tableroJugador1.contarBarcos();
         tableroJugador2.contarBarcos();
 
+
+
         //Comienza el juego
         while(true) {
 
-            // while jugador 1 aceierta
+            if(tableroJugador1.hundidos<tableroJugador1.numeroBarcos){
+                do {
+                    tableroJugador2.mostrarTablero();
 
-            tableroJugador2.mostrarTablero();
+                    jugador1.introducirPosicionAtaque();
 
-            jugador1.introducirPosicionAtaque();
+                    tableroJugador2.comprobarCasilla(jugador1);
 
-            tableroJugador2.comprobarCasilla(jugador1);
+                    tableroJugador2.comprobarTodosHundidos();
 
-            tableroJugador2.comprobarTodosHundidos();
-
+                } while(tableroJugador2.casillas[jugador1.fila][jugador1.columna]==3);
+            } else {
+                return;
+            }
 
             // if (tablero2 NO estaban todos hundidos)
-            // while jugador2 acierta
 
-            tableroJugador1.mostrarTablero();
+            if(tableroJugador2.hundidos<tableroJugador2.numeroBarcos){
+                do {
+                    tableroJugador1.mostrarTablero();
 
-            jugador2.introducirPosicionAtaque();
+                    jugador2.introducirPosicionAtaque();
 
-            tableroJugador1.comprobarCasilla(jugador2);
+                    tableroJugador1.comprobarCasilla(jugador2);
 
-            tableroJugador1.comprobarTodosHundidos();
+                    tableroJugador1.comprobarTodosHundidos();
+
+                } while(tableroJugador1.casillas[jugador2.fila][jugador2.columna]==3);
+            } else {
+                return;
+            }
+
+
         }
 
     }
