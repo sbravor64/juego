@@ -45,6 +45,10 @@ public class Main {
 
                 } while(tableroJugador2.casillas[jugador1.fila][jugador1.columna]==3
                         && tableroJugador2.hundidos<tableroJugador2.numeroBarcos);
+                // si la casilla contiene un "3" que es igual a "Barco",
+                // el jugador tendra otra oportunidad para hundir un barco.
+                // si la casilla contiene un "2" que es igual a "Agua",
+                // el jugador pierde turno y empieza a jugar el otro jugador.
 
 
                 //Mostrar el nombre del jugador ganador

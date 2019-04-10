@@ -42,9 +42,9 @@ class Tablero {
                 } else if(casillas[i][j] == 1){
                     System.out.print("*");
                 } else if(casillas[i][j] == 2){
-                    System.out.print("O");
+                    System.out.print("\033[34mO\033[0m");
                 } else if(casillas[i][j] == 3){
-                    System.out.print("B");
+                    System.out.print("\u001B[31mB\033[0m");
                 }
             }
             System.out.println();
@@ -52,26 +52,27 @@ class Tablero {
     }
 
     void comprobarCasilla(Jugador jugador) {
-        if(casillas[jugador.fila][jugador.columna] == 0){
-            System.out.println("\033[34mHas dado en el Agua\033[0m");
-            System.out.println("Pierdes Turno");
-            casillas[jugador.fila][jugador.columna] = 2;
 
-        }
-        else if(casillas[jugador.fila][jugador.columna] == 1){
-            System.out.println("\u001B[31mHas hundido un Barco\033[0m");
-            System.out.println("Sigue Intentándolo");
-            casillas[jugador.fila][jugador.columna] = 3;
-            hundidos++;
-        }
-        else if(casillas[jugador.fila][jugador.columna] == 2){
-            System.out.println("Recuerda que 'O' significa Agua");
-            System.out.println("Pierdes Turno");
-        }
-        else if(casillas[jugador.fila][jugador.columna] == 3){
-            System.out.println("Ya has encontrado un Barco en esta posición");
-            System.out.println("Vuelve a intentarlo");
-        }
+            if(casillas[jugador.fila][jugador.columna] == 0){
+                System.out.println("\033[34mHas dado en el Agua\033[0m");
+                System.out.println("Pierdes Turno");
+                casillas[jugador.fila][jugador.columna] = 2;
+
+            }
+            else if(casillas[jugador.fila][jugador.columna] == 1){
+                System.out.println("\u001B[31mHas hundido un Barco\033[0m");
+                System.out.println("Sigue Intentándolo");
+                casillas[jugador.fila][jugador.columna] = 3;
+                hundidos++;
+            }
+            else if(casillas[jugador.fila][jugador.columna] == 2){
+                System.out.println("Recuerda que 'O' significa Agua");
+                System.out.println("Pierdes Turno");
+            }
+            else if(casillas[jugador.fila][jugador.columna] == 3){
+                System.out.println("Ya has encontrado un Barco en esta posición");
+                System.out.println("Vuelve a intentarlo");
+            }
     }
 
 
@@ -82,7 +83,7 @@ class Tablero {
             System.out.println();
             System.out.println("---------------");
             System.out.println("¡¡FELICIDADES!!");
-            System.out.print("HAS GANADO!! ");
+            System.out.print("HAS GANADO ");
         }
     }
 }

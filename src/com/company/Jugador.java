@@ -16,13 +16,17 @@ class Jugador {
 
 
     void introducirPosicionAtaque(){
+
         System.out.println(nick + " dime la posición que quieres atacar.");
         System.out.print("FILA: ");
         fila = teclado.nextInt() -1;
         System.out.print("COLUMNA: ");
         columna = teclado.nextInt()-1;
 
+    }
 
+    void comprobarPosicionesCorrectas(){
+        while(fila>4 || columna>){}
     }
 
 }
