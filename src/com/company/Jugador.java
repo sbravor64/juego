@@ -25,9 +25,6 @@ class Jugador {
 
     }
 
-    void comprobarPosicionesCorrectas(){
-        while(fila>4 || columna>){}
-    }
 
 }
 
